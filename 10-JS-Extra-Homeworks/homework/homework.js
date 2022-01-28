@@ -1,7 +1,7 @@
 // No cambies los nombres de las funciones.
 
 function deObjetoAmatriz(objeto){
-  // Escribe una función que convierta un objeto en una matriz, donde cada elemento representa 
+  // Escribe unaObject.create(proto[, propertiesObject]) donde cada elemento representa 
   // un par clave-valor en forma de matriz.
   //Ejemplo: 
   /*objeto({
@@ -10,6 +10,13 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+ var array = [];
+ for (clave in objeto) {
+
+   array.push([clave, objeto[clave]]);
+   
+ }
+ return array;
 }
 
 
@@ -18,6 +25,20 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  objeto = {};
+
+  for (var i = 0; i < string.length; i++) {
+
+    if(Object.keys(objeto).includes(string[i])) {
+
+      objeto[string[i]] = objeto[string[i]]+1
+
+  } else {
+
+    objeto[string[i]] = 1;
+  }
+}
+return objeto;
 }
 
 
@@ -26,6 +47,20 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+  minusculas = "";
+  mayusculas = "";
+  for  (var i = 0; i < s.length; i++) {
+    if(s[i] === s[i].toUpperCase()) {
+      mayusculas += s[i];
+    } else {
+      minusculas += s[i];
+
+    }
+   
+  } 
+  
+  return (mayusculas + minusculas);
+  // return "".concat(mayusculas,minusculas);
 }
 
 
@@ -35,7 +70,15 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
-} 
+  var fraseEspejo = str.split(" ").map(function (palabra) {
+
+    return palabra.split("").reverse().join("")
+  }).join(" ");
+
+return fraseEspejo;
+
+}
+
 
 
 function capicua(numero){
@@ -43,6 +86,16 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+  var numero1 = numero.toString();
+  var numero2;
+
+  numero2 = numero1.split("").reverse().join("");
+  if (numero1 === numero2) {
+    return "Es capicua";
+    } else {
+    return "No es capicua";
+  }
+
 }
 
 
@@ -50,14 +103,46 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+  cadena = cadena.replace("a","");
+  cadena = cadena.replace("b","");
+  cadena = cadena.replace("c","");
+
+  return cadena;
+
 }
+
 
 
 function sortArray(arr) {
-  //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
+//La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+//for (var i = 0; i<array.length; i++) {
+ // for (var j = i+1; j< arreay.length; j++) {
+ //   if(arr[i].length>arr[j].legnth){
+  //    var aux = arr[i];
+  //    arr[i] = arr[j];
+   //   arr[j] = aux
+   // }
+ // }
+//}
+//return arr
+//}
+
+arr.sort(function(a, b) {
+  if (a.legnth>b.lemgth) {
+    return 1
+  }
+  if(a.length<b.length) {
+    return -1
+  }
+    return 0
+  });
+return arr
 }
+
+
+
 
 
 function buscoInterseccion(arreglo1, arreglo2){
@@ -66,7 +151,19 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
+  var interc = []
+  for (var i=0; i < arreglo1.length; i++) {
+    for (var j=0; j < arreglo2.length; j++) {
+      if (arreglo1[i] == arreglo2[j]) {
+        interc.push(arreglo1[i]);
+      }
+    }
+  }
+  return interc;
+
 }
+
+
 
 
 
